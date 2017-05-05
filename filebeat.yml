@@ -27,18 +27,8 @@ filebeat.prospectors:
   document_type: kube-logs
   fields_under_root: true
 
-- input_type: log
-  paths:
-    - "/tmp/mybeat.log"
-  document_type: filebeat
-
 output.redis:
   hosts: ${REDIS_HOST:?No Redis host configured. Use env var REDIS_HOST to set host.}
   key: "filebeat"
 
 logging.level: ${LOG_LEVEL:error}
-logging.files:
-  path: /tmp
-  name: mybeat.log
-  keepfiles: 3
-
