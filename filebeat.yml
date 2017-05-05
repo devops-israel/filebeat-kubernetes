@@ -33,7 +33,7 @@ filebeat.prospectors:
   document_type: filebeat
 
 output.redis:
-  hosts: ${REDIS_HOST:?No logstash host configured. Use env var REDIS_HOST to set host.}
+  hosts: ${REDIS_HOST:?No Redis host configured. Use env var REDIS_HOST to set host.}
   key: "filebeat"
 
 logging.level: ${LOG_LEVEL:error}
