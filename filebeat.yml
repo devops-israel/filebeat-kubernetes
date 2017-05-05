@@ -1,0 +1,44 @@
+filebeat.registry_file: /var/log/containers/filebeat_registry
+filebeat.idle_timeout: 5s
+filebeat.spool_size: 2048
+
+filebeat.prospectors:
+- input_type: log
+  paths:
+    - "/var/log/containers/*.log"
+    - "/var/log/salt/minion"
+    - "/var/log/startupscript.log"
+    - "/var/log/docker.log"
+    - "/var/log/etcd.log"
+    - "/var/log/kubelet.log"
+    - "/var/log/kube-proxy.log"
+    - "/var/log/kube-apiserver.log"
+    - "/var/log/kube-controller-manager.log"
+    - "/var/log/kube-scheduler.log"
+    - "/var/log/rescheduler.log"
+    - "/var/log/glbc.log"
+    - "/var/log/cluster-autoscaler.log"
+  symlinks: true
+  json.message_key: log
+  json.keys_under_root: true
+  json.add_error_key: true
+  multiline.pattern: '^\s'
+  multiline.match: after
+  document_type: kube-logs
+  fields_under_root: true
+
+- input_type: log
+  paths:
+    - "/tmp/mybeat.log"
+  document_type: filebeat
+
+output.redis:
+  hosts: ${REDIS_HOST:?No logstash host configured. Use env var REDIS_HOST to set host.}
+  key: "filebeat"
+
+logging.level: ${LOG_LEVEL:error}
+logging.files:
+  path: /tmp
+  name: mybeat.log
+  keepfiles: 3
+
