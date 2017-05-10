@@ -2,6 +2,8 @@ filebeat.registry_file: /var/log/containers/filebeat_registry
 filebeat.idle_timeout: 5s
 filebeat.spool_size: 2048
 
+logging.level: critical
+
 filebeat.prospectors:
 - input_type: log
   paths:
