@@ -23,10 +23,9 @@ filebeat.prospectors:
   json.keys_under_root: true
   json.add_error_key: true
   document_type: kube-logs
+  tail_files: true
   fields_under_root: true
 
 output.redis:
   hosts: ${REDIS_HOST:?No Redis host configured. Use env var REDIS_HOST to set host.}
   key: "filebeat"
-
-logging.level: ${LOG_LEVEL:error}
