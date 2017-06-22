@@ -8,6 +8,15 @@ filebeat.prospectors:
 - input_type: log
   paths:
     - "/var/log/containers/*.log"
+    - "/var/log/startupscript.log"
+    - "/var/log/kubelet.log"
+    - "/var/log/kube-proxy.log"
+    - "/var/log/kube-apiserver.log"
+    - "/var/log/kube-controller-manager.log"
+    - "/var/log/kube-scheduler.log"
+    - "/var/log/rescheduler.log"
+    - "/var/log/glbc.log"
+    - "/var/log/cluster-autoscaler.log"
   symlinks: true
   json.message_key: log
   json.keys_under_root: true
