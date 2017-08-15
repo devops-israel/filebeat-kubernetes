@@ -7,8 +7,8 @@ logging.level: critical
 filebeat.prospectors:
 - input_type: log
   paths:
-    - "/var/log/containers/**/*.log"
-    - "/var/log/docker/containers/**/*.log"
+    - "/var/log/containers/*.log"
+    - "/var/log/docker/containers/*.log"
     - "/var/log/startupscript.log"
     - "/var/log/kubelet.log"
     - "/var/log/kube-proxy.log"
