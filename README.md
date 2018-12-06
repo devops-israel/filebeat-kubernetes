@@ -9,6 +9,7 @@ You can provide following environment variables to customize it.
 ```bash
 REDIS_HOST=example.com:6379
 LOG_LEVEL=info  # log level for filebeat. Defaults to "error".
+REDIS_PASSWORD=somesecurepassword  # Redis password # optional
 ```
 
 This should be run as a Kubernetes Daemonset (a pod on every node). Example manifest:
@@ -40,6 +41,8 @@ spec:
             value: myhost.com:5000
           - name: LOG_LEVEL
             value: info
+          - name: REDIS_PASSWORD
+            value: somesecurepassword
         volumeMounts:
         - name: varlog
           mountPath: /var/log
