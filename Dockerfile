@@ -11,5 +11,6 @@ RUN apk update && \
     apk del wget
 
 COPY filebeat.yml /etc/filebeat/
+COPY run.sh /etc/filebeat/run.sh
 
-CMD ["/usr/local/bin/filebeat", "-e", "-c", "/etc/filebeat/filebeat.yml"]
+CMD ["/etc/filebeat/run.sh"]
