@@ -21,7 +21,7 @@ filebeat.prospectors:
   symlinks: true
   json.message_key: log
   json.keys_under_root: true
-  json.add_error_key: true
+  json.add_error_key: false
   multiline.pattern: '^\s'
   multiline.match: after
   document_type: kube-logs
